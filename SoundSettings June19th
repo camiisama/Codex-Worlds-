@@ -12,8 +12,8 @@ public class Test : MonoBehaviour {
 	public float switch1 = 0.0f;
 	public float switch2 = 0.0f;
 	public float switch3 = 0.0f;
-
-	public float vSbarValue;
+	
+	public Vector2 scrollposition = Vector2.zero;
 
 	void OnGUI() {
 		if (menu) { 
@@ -23,18 +23,32 @@ public class Test : MonoBehaviour {
 			}
 		}
 		if(sound){
-			vSbarValue = GUI.VerticalScrollbar(new Rect(Screen.width/2 + 100, Screen.height/2 - 75, 115, 150), vSbarValue, 1.0F, 10.0F, 0.0F);
 
-			toggle1 = GUI.Toggle (new Rect(Screen.width/2 - 150, Screen.height/2 - 30, 100, 30), toggle1, " On.");
-			toggle2 = GUI.Toggle (new Rect(Screen.width/2 - 150, Screen.height/2, 100, 30), toggle2, " On.");
+			toggle1 = GUI.Toggle (
+				new Rect(Screen.width/2 - 150, Screen.height/2 - 30, 100, 30), 
+				toggle1, 
+				" On.");
+			toggle2 = GUI.Toggle (
+				new Rect(Screen.width/2 - 150, Screen.height/2, 100, 30), 
+				toggle2, 
+				" On.");
 			
-			switch1 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 - 50, 100, 30), (int)switch1, 0.0f, 100.0f);
-			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 - 50, 100, 30), switch1 + "%");
-			switch2 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 - 20, 100, 30), (int)switch2, 0.0f, 100.0f);
-			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 - 20, 100, 30), switch2 + "%");
-			switch3 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 + 10, 100, 30), (int)switch3, 0.0f, 100.0f);
-			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 + 10, 100, 30), switch3 + "%");
-			
+			switch1 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 - 50, 100, 30), 
+			                                (int)switch1, 
+			                                0.0f, 100.0f);
+			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 - 55, 100, 30), 
+			          switch1 + "%");
+			switch2 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 - 20, 100, 30), 
+			                                (int)switch2, 
+			                                0.0f, 100.0f);
+			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 - 25, 100, 30), 
+			          switch2 + "%");
+			switch3 = GUI.HorizontalSlider (new Rect (Screen.width/2 - 50, Screen.height/2 + 10, 100, 30), 
+			                                (int)switch3,
+			                                0.0f, 100.0f);
+			GUI.Label(new Rect(Screen.width/2 - 50 + 110, Screen.height/2 + 5, 100, 30), 
+			          switch3 + "%");
+
 			if (GUI.Button(new Rect(Screen.width/2 - 200, Screen.height/2 + 100, 115, 30), "Ok")){
 				PlayerPrefs.Save ();
 				sound = false;
@@ -59,6 +73,7 @@ public class Test : MonoBehaviour {
 				sound = false;
 				menu = true;
 			}
+
 		}
 	}
 	
@@ -68,6 +83,7 @@ public class Test : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
 }
+	
